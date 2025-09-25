@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>IELTS Writing & Grammar Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --success: #22c55e;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            overflow-x: hidden;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        header {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .stats-bar {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: var(--light);
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--dark);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .sidebar {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu-toggle {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .sidebar-content {
+            display: none;
+        }
+
+        .sidebar-content.show {
+            display: block;
+        }
+
+        .category-filters {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .category-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: none;
+            border-radius: 8px;
+            background: var(--light);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .category-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .card-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            min-height: 500px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .card-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .card-number {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .difficulty-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .flashcard {
+            perspective: 1000px;
+            height: 300px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: var(--white);
+            transform: rotateY(180deg);
+        }
+
+        .card-content {
+            font-size: 16px;
+            line-height: 1.6;
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 200px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .card-hint {
+            font-size: 14px;
+            margin-top: 20px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .quiz-container {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-question {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .quiz-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .quiz-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .quiz-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .quiz-input.incorrect {
+            border-color: var(--danger);
+            background: #f8d7da;
+        }
+
+        .quiz-feedback {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .quiz-feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .progress-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .achievement {
+            text-align: center;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .achievement.unlocked {
+            border-color: var(--success);
+            background: linear-gradient(45deg, #d4edda, #c3e6cb);
+        }
+
+        .achievement-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .achievement-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .timer {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--danger);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timer.active {
+            display: block;
+        }
+
+        @media (min-width: 769px) {
+            .main-content {
+                grid-template-columns: 280px 1fr;
+                gap: 20px;
+            }
+
+            .sidebar {
+                position: sticky;
+                top: 20px;
+                height: fit-content;
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .sidebar-content {
+                display: block !important;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .flashcard {
+                height: 350px;
+            }
+
+            .card-content {
+                font-size: 20px;
+                line-height: 1.8;
+                max-height: 280px;
+            }
+
+            header {
+                padding: 25px;
+            }
+
+            body {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .stat-item {
+                padding: 10px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .language-toggle {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .language-toggle button {
+                width: 100%;
+            }
+
+            .study-mode-selector {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                display: flex;
+                gap: 10px;
+                padding-bottom: 10px;
+            }
+
+            .mode-btn {
+                min-width: 100px;
+                flex: 0 0 auto;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .control-btn {
+                width: 100%;
+            }
+
+            .card-container {
+                padding: 15px;
+            }
+
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .shortcuts-help {
+                display: none;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px;
+            }
+        }
+
+        .feedback-summary {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feedback-item {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feedback-excellent {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .feedback-good {
+            background: linear-gradient(135deg, #cce5ff, #b8daff);
+            color: #004085;
+        }
+
+        .feedback-needs-work {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            color: #856404;
+        }
+
+        .skip-btn {
+            background: var(--warning);
+            color: var(--white);
+        }
+
+        .hint-btn {
+            background: #6366f1;
+            color: var(--white);
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .sidebar, .controls, .stats-bar, header {
+                display: none;
+            }
+
+            .flashcard {
+                page-break-inside: avoid;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            .flashcard-inner {
+                transform: none !important;
+            }
+
+            .flashcard-front, .flashcard-back {
+                position: static;
+                margin-bottom: 10px;
+                color: black;
+                background: white !important;
+                border: 1px solid #ddd;
+            }
+        }
+
+        .study-mode-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
+            border: 2px solid var(--light);
+            background: var(--white);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .mode-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .mode-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .mode-label {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .shortcuts-help {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .shortcuts-help:hover {
+            opacity: 1;
+        }
+
+        .performance-chart {
+            margin-top: 20px;
+            height: 200px;
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            height: 150px;
+            gap: 10px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 5px 5px 0 0;
+            min-height: 10px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        .loading-spinner.show {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+            background: var(--light);
+            border-radius: 15px;
+            font-size: 11px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .tag.selected {
+            background: var(--primary);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">IELTS Writing & Grammar</div>
+                <div class="language-toggle">
+                    <span id="langLabel">Language:</span>
+                    <button class="btn btn-primary" id="langToggle" onclick="toggleLanguage()">EN / DE</button>
+                    <button class="btn btn-secondary" onclick="openSettingsModal()">⚙️ Settings</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalCards">0</div>
+                    <div class="stat-label" id="totalLabel">Total Cards</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="masteredCards">0</div>
+                    <div class="stat-label" id="masteredLabel">Mastered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="streakDays">0</div>
+                    <div class="stat-label" id="streakLabel">Day Streak</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="accuracy">0%</div>
+                    <div class="stat-label" id="accuracyLabel">Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="sessionTime">00:00</div>
+                    <div class="stat-label" id="sessionLabel">Session Time</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="study-mode-selector">
+            <div class="mode-btn active" onclick="setStudyMode('flashcard')">
+                <div class="mode-icon">🎴</div>
+                <div class="mode-label">Flash Cards</div>
+            </div>
+            <div class="mode-btn" onclick="setStudyMode('quiz')">
+                <div class="mode-icon">✍️</div>
+                <div class="mode-label">Type Quiz</div>
+            </div>
+            <div class="mode-btn" onclick="setStudyMode('multiple')">
+                <div class="mode-icon">📝</div>
+                <div class="mode-label">Multiple Choice</div>
+            </div>
+            <div class="mode-btn" onclick="setStudyMode('listening')">
+                <div class="mode-icon">🎧</div>
+                <div class="mode-label">Listening</div>
+            </div>
+            <div class="mode-btn" onclick="setStudyMode('timed')">
+                <div class="mode-icon">⏱️</div>
+                <div class="mode-label">Timed Practice</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <button class="mobile-menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+                <div class="sidebar-content" id="sidebarContent">
+                    <div class="search-container">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search cards..." onkeyup="searchCards()">
+                    </div>
+
+                    <div class="category-filters">
+                        <div class="category-title">Priority Topics</div>
+                        <button class="category-btn active" onclick="filterCategory('all')">All Categories</button>
+                        <button class="category-btn" onclick="filterCategory('writing-task1')">📊 Writing Task 1</button>
+                        <button class="category-btn" onclick="filterCategory('writing-task2')">📝 Writing Task 2</button>
+                        <button class="category-btn" onclick="filterCategory('grammar')">📚 Grammar</button>
+                        <button class="category-btn" onclick="filterCategory('vocabulary')">💬 Vocabulary</button>
+                        <button class="category-btn" onclick="filterCategory('collocations')">🔗 Collocations</button>
+                    </div>
+
+                    <div class="category-filters">
+                        <div class="category-title">Other Skills</div>
+                        <button class="category-btn" onclick="filterCategory('speaking')">🗣️ Speaking</button>
+                        <button class="category-btn" onclick="filterCategory('reading')">📖 Reading</button>
+                        <button class="category-btn" onclick="filterCategory('idioms')">💭 Idioms</button>
+                    </div>
+
+                    <div class="category-filters">
+                        <div class="category-title">Advanced (Later)</div>
+                        <button class="category-btn" onclick="filterCategory('listening')">🎧 Listening</button>
+                    </div>
+
+                <div class="category-filters">
+                    <div class="category-title">Difficulty</div>
+                    <button class="category-btn" onclick="filterDifficulty('all')">All Levels</button>
+                    <button class="category-btn" onclick="filterDifficulty('easy')">Easy (5-6)</button>
+                    <button class="category-btn" onclick="filterDifficulty('medium')">Medium (6.5-7)</button>
+                    <button class="category-btn" onclick="filterDifficulty('hard')">Hard (7.5-9)</button>
+                </div>
+
+                <div class="category-filters">
+                    <div class="category-title">Quick Actions</div>
+                    <button class="category-btn" onclick="reviewMistakes()">Review Mistakes</button>
+                    <button class="category-btn" onclick="spacedRepetition()">Due for Review</button>
+                    <button class="category-btn" onclick="resetProgress()">Reset Progress</button>
+                </div>
+
+                    <div class="tags-container" id="tagsContainer"></div>
+                </div>
+            </aside>
+
+            <main class="card-container">
+                <div class="timer" id="timer">00:30</div>
+
+                <div class="card-header">
+                    <div class="card-info">
+                        <span class="card-number" id="cardNumber">Card 1 of 1000</span>
+                        <span class="difficulty-badge difficulty-medium" id="difficultyBadge">Medium</span>
+                    </div>
+                    <div class="card-info">
+                        <button class="btn btn-primary" onclick="markMastered()">✓ Mastered</button>
+                        <button class="btn hint-btn" onclick="showHint()">💡 Hint</button>
+                    </div>
+                </div>
+
+                <div id="studyArea">
+                    <!-- Dynamic content area for different study modes -->
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="card-content" id="cardFront">Loading cards...</div>
+                                <div class="card-hint">Click to flip</div>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="card-content" id="cardBack">Loading answer...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-feedback" id="quizFeedback"></div>
+
+                <div class="controls">
+                    <button class="control-btn btn-primary" onclick="previousCard()">
+                        ← Previous
+                    </button>
+                    <button class="control-btn btn-secondary" onclick="shuffleCards()">
+                        🔀 Shuffle
+                    </button>
+                    <button class="control-btn skip-btn" onclick="skipCard()">
+                        ⏭️ Skip
+                    </button>
+                    <button class="control-btn btn-primary" onclick="nextCard()">
+                        Next →
+                    </button>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+                    </div>
+                    <div class="performance-chart">
+                        <div class="chart-bars" id="chartBars"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="feedback-summary">
+            <h3>Session Performance</h3>
+            <div class="feedback-grid">
+                <div class="feedback-item feedback-excellent">
+                    <div class="stat-value" id="excellentCount">0</div>
+                    <div>Excellent</div>
+                </div>
+                <div class="feedback-item feedback-good">
+                    <div class="stat-value" id="goodCount">0</div>
+                    <div>Good</div>
+                </div>
+                <div class="feedback-item feedback-needs-work">
+                    <div class="stat-value" id="needsWorkCount">0</div>
+                    <div>Needs Work</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">Settings</div>
+            <div>
+                <h3>Study Preferences</h3>
+                <label>
+                    <input type="checkbox" id="autoFlip"> Auto-flip cards after 5 seconds
+                </label><br>
+                <label>
+                    <input type="checkbox" id="soundEffects" checked> Sound effects
+                </label><br>
+                <label>
+                    <input type="checkbox" id="timedMode"> Timed mode (30 seconds per card)
+                </label><br>
+                <label>
+                    Timer duration: <input type="number" id="timerDuration" value="30" min="10" max="120"> seconds
+                </label><br><br>
+                <h3>Display Options</h3>
+                <label>
+                    <input type="checkbox" id="darkMode"> Dark mode
+                </label><br>
+                <label>
+                    Font size:
+                    <select id="fontSize">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </label><br><br>
+                <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+                <button class="btn btn-secondary" onclick="closeSettingsModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal -->
+    <div class="modal show" id="languageModal">
+        <div class="modal-content">
+            <div class="modal-header">Welcome! Willkommen!</div>
+            <p>Choose your primary language / Wählen Sie Ihre Hauptsprache:</p><br>
+            <button class="btn btn-primary" onclick="setLanguage('en')" style="margin-right: 10px;">English</button>
+            <button class="btn btn-primary" onclick="setLanguage('de')">Deutsch</button>
+        </div>
+    </div>
+
+    <div class="shortcuts-help" onclick="showShortcuts()">
+        ⌨️ Keyboard Shortcuts
+    </div>
+
+    <div class="loading-spinner" id="loadingSpinner"></div>
+
+    <script>
+        // Global variables
+        let cards = [];
+        let currentCardIndex = 0;
+        let language = 'en';
+        let currentCategory = 'all';
+        let currentDifficulty = 'all';
+        let studyMode = 'flashcard';
+        let masteredCards = new Set();
+        let mistakeCards = new Set();
+        let sessionStats = {
+            correct: 0,
+            incorrect: 0,
+            skipped: 0,
+            startTime: Date.now(),
+            cardsStudied: 0
+        };
+        let timerInterval = null;
+        let timeRemaining = 30;
+
+        // Generate comprehensive IELTS content
+        function generateCards() {
+            const categories = {
+                listening: {
+                    topics: ['lecture', 'conversation', 'monologue', 'discussion', 'presentation', 'interview', 'announcement'],
+                    skills: ['main idea', 'specific information', 'inference', 'speaker attitude', 'purpose', 'detail comprehension']
+                },
+                reading: {
+                    topics: ['academic article', 'research paper', 'editorial', 'report', 'case study', 'analysis', 'review'],
+                    skills: ['skimming', 'scanning', 'paraphrasing', 'inference', 'vocabulary in context', 'author purpose']
+                },
+                'writing-task1': {
+                    types: ['line graph', 'bar chart', 'pie chart', 'table', 'process diagram', 'map', 'mixed charts'],
+                    vocabulary: ['increase', 'decrease', 'fluctuate', 'remain stable', 'peak', 'trough', 'gradual', 'sharp', 'significant']
+                },
+                'writing-task2': {
+                    types: ['opinion', 'discussion', 'problem-solution', 'advantages-disadvantages', 'direct question', 'mixed'],
+                    topics: ['education', 'technology', 'environment', 'health', 'society', 'economy', 'culture', 'globalization']
+                },
+                speaking: {
+                    parts: ['part1-personal', 'part2-monologue', 'part3-discussion'],
+                    topics: ['hometown', 'work', 'study', 'hobbies', 'travel', 'technology', 'culture', 'future plans']
+                },
+                vocabulary: {
+                    levels: ['basic', 'intermediate', 'advanced', 'academic'],
+                    types: ['synonyms', 'antonyms', 'word families', 'phrasal verbs', 'academic words']
+                },
+                grammar: {
+                    topics: ['tenses', 'conditionals', 'passive voice', 'reported speech', 'relative clauses', 'modals'],
+                    levels: ['basic', 'intermediate', 'advanced']
+                },
+                idioms: {
+                    categories: ['business', 'daily life', 'emotions', 'success', 'problems', 'time'],
+                    frequency: ['common', 'intermediate', 'advanced']
+                },
+                collocations: {
+                    types: ['verb+noun', 'adjective+noun', 'noun+noun', 'verb+adverb', 'adverb+adjective'],
+                    topics: ['academic', 'business', 'general', 'formal writing']
+                }
+            };
+
+            // Academic vocabulary for Task 1
+            const task1Vocabulary = {
+                trends: [
+                    { en: 'fluctuate', de: 'schwanken', example: 'Sales fluctuated between 100 and 150 units.' },
+                    { en: 'plummet', de: 'stürzen', example: 'Prices plummeted after the crisis.' },
+                    { en: 'soar', de: 'in die Höhe schießen', example: 'Temperatures soared to record highs.' },
+                    { en: 'plateau', de: 'sich einpendeln', example: 'Growth plateaued at 5% annually.' },
+                    { en: 'peak', de: 'Höhepunkt erreichen', example: 'Sales peaked in December.' },
+                    { en: 'trough', de: 'Tiefpunkt', example: 'The market hit a trough in 2009.' },
+                    { en: 'surge', de: 'ansteigen', example: 'There was a surge in demand.' },
+                    { en: 'dip', de: 'einbrechen', example: 'Profits dipped slightly in Q3.' },
+                    { en: 'stabilize', de: 'stabilisieren', example: 'Prices stabilized after the intervention.' },
+                    { en: 'recover', de: 'sich erholen', example: 'The economy recovered gradually.' }
+                ],
+                comparisons: [
+                    { en: 'considerably', de: 'erheblich', usage: 'considerably higher than' },
+                    { en: 'marginally', de: 'geringfügig', usage: 'marginally lower than' },
+                    { en: 'substantially', de: 'wesentlich', usage: 'substantially greater than' },
+                    { en: 'negligibly', de: 'vernachlässigbar', usage: 'negligibly different from' },
+                    { en: 'overwhelmingly', de: 'überwältigend', usage: 'overwhelmingly in favor of' }
+                ]
+            };
+
+            // Essay structure vocabulary for Task 2
+            const task2Vocabulary = {
+                introduction: [
+                    { en: 'It is widely believed that', de: 'Es wird allgemein angenommen, dass' },
+                    { en: 'There is ongoing debate about', de: 'Es gibt eine anhaltende Debatte über' },
+                    { en: 'This essay will examine', de: 'Dieser Aufsatz wird untersuchen' },
+                    { en: 'From my perspective', de: 'Aus meiner Sicht' },
+                    { en: 'The issue of X has become increasingly prominent', de: 'Das Thema X ist zunehmend wichtig geworden' }
+                ],
+                mainBody: [
+                    { en: 'Furthermore', de: 'Darüber hinaus' },
+                    { en: 'Nevertheless', de: 'Nichtsdestotrotz' },
+                    { en: 'Consequently', de: 'Folglich' },
+                    { en: 'In contrast', de: 'Im Gegensatz dazu' },
+                    { en: 'Admittedly', de: 'Zugegebenermaßen' },
+                    { en: 'Notwithstanding', de: 'Ungeachtet dessen' }
+                ],
+                conclusion: [
+                    { en: 'In conclusion', de: 'Zusammenfassend' },
+                    { en: 'To recapitulate', de: 'Um zu rekapitulieren' },
+                    { en: 'All things considered', de: 'Alles in allem' },
+                    { en: 'Taking everything into account', de: 'Alles berücksichtigt' }
+                ]
+            };
+
+            // Speaking phrases
+            const speakingPhrases = {
+                opinions: [
+                    { en: 'I strongly believe that', de: 'Ich glaube fest daran, dass' },
+                    { en: 'In my humble opinion', de: 'Meiner bescheidenen Meinung nach' },
+                    { en: 'I\'m inclined to think that', de: 'Ich neige dazu zu denken, dass' },
+                    { en: 'From my point of view', de: 'Aus meiner Sicht' },
+                    { en: 'I\'m convinced that', de: 'Ich bin überzeugt, dass' }
+                ],
+                examples: [
+                    { en: 'To illustrate this point', de: 'Um diesen Punkt zu veranschaulichen' },
+                    { en: 'A case in point is', de: 'Ein Beispiel dafür ist' },
+                    { en: 'Take, for instance', de: 'Nehmen Sie zum Beispiel' },
+                    { en: 'This can be exemplified by', de: 'Dies kann veranschaulicht werden durch' }
+                ],
+                clarifying: [
+                    { en: 'What I mean to say is', de: 'Was ich meine ist' },
+                    { en: 'To put it another way', de: 'Anders ausgedrückt' },
+                    { en: 'In other words', de: 'Mit anderen Worten' },
+                    { en: 'That is to say', de: 'Das heißt' }
+                ]
+            };
+
+            // Idioms and expressions
+            const idioms = [
+                { en: 'A blessing in disguise', de: 'Ein Glück im Unglück', meaning: 'Something bad that turns out good' },
+                { en: 'Break the ice', de: 'Das Eis brechen', meaning: 'To initiate conversation' },
+                { en: 'Hit the books', de: 'Büffeln', meaning: 'To study hard' },
+                { en: 'Under the weather', de: 'Nicht gut drauf', meaning: 'Feeling ill' },
+                { en: 'Piece of cake', de: 'Ein Kinderspiel', meaning: 'Very easy' },
+                { en: 'Cost an arm and a leg', de: 'Ein Vermögen kosten', meaning: 'Very expensive' },
+                { en: 'Break a leg', de: 'Hals- und Beinbruch', meaning: 'Good luck' },
+                { en: 'Bite the bullet', de: 'In den sauren Apfel beißen', meaning: 'Do something unpleasant' },
+                { en: 'Beat around the bush', de: 'Um den heißen Brei herumreden', meaning: 'Avoid the main topic' },
+                { en: 'Burn the midnight oil', de: 'Bis spät in die Nacht arbeiten', meaning: 'Work late' }
+            ];
+
+            // Common mistakes and false friends
+            const commonMistakes = [
+                {
+                    mistake: 'I am agree',
+                    correct: 'I agree',
+                    explanation: 'Agree is a verb, not an adjective'
+                },
+                {
+                    mistake: 'Depends of',
+                    correct: 'Depends on',
+                    explanation: 'The correct preposition is "on"'
+                },
+                {
+                    mistake: 'Different than',
+                    correct: 'Different from',
+                    explanation: 'In British English, use "from"'
+                }
+            ];
+
+            // Generate 1000 cards with diverse content - PRIORITIZING WRITING & GRAMMAR
+            const generatedCards = [];
+            let cardId = 1;
+
+            // Writing Task 1 cards - EXPANDED (250 cards)
+            for (let i = 0; i < 250; i++) {
+                const chartTypes = ['line graph', 'bar chart', 'pie chart', 'table', 'process diagram', 'map comparison', 'mixed charts'];
+                const chartType = chartTypes[i % chartTypes.length];
+
+                if (i < 50) {
+                    // Overview sentence structures
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task1',
+                        difficulty: 'easy',
+                        type: 'quiz',
+                        question: {
+                            en: `Write an overview sentence for a ${chartType} showing an increase`,
+                            de: `Schreiben Sie einen Überblickssatz für ${chartType} mit Anstieg`
+                        },
+                        answer: {
+                            en: `Overall, the ${chartType} reveals a significant upward trend throughout the period, with values rising from X to Y.`,
+                            de: `Insgesamt zeigt ${chartType} einen deutlichen Aufwärtstrend über den Zeitraum, mit Werten von X bis Y.`
+                        },
+                        expectedAnswer: 'Overall',
+                        hint: 'Start with "Overall" for overview paragraphs',
+                        tags: ['writing', 'task1', 'overview', chartType]
+                    });
+                } else if (i < 100) {
+                    // Comparison structures
+                    const comparison = task1Vocabulary.comparisons[i % task1Vocabulary.comparisons.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task1',
+                        difficulty: 'medium',
+                        type: 'quiz',
+                        question: {
+                            en: `Complete: "Sales in 2020 were _____ higher than in 2019" using '${comparison.en}'`,
+                            de: `Ergänzen: "Verkäufe 2020 waren _____ höher als 2019" mit '${comparison.de}'`
+                        },
+                        answer: {
+                            en: `Sales in 2020 were ${comparison.usage} 2019`,
+                            de: `Verkäufe 2020 waren ${comparison.de} höher als 2019`
+                        },
+                        expectedAnswer: comparison.en,
+                        hint: `Think about degree of difference`,
+                        tags: ['writing', 'task1', 'comparison', 'vocabulary']
+                    });
+                } else if (i < 150) {
+                    // Time expressions
+                    const timeExpressions = [
+                        { expr: 'over the period shown', usage: 'for entire timeframe' },
+                        { expr: 'between X and Y', usage: 'specific time range' },
+                        { expr: 'from the outset', usage: 'beginning of period' },
+                        { expr: 'by the end of', usage: 'conclusion of timeframe' },
+                        { expr: 'throughout the decade', usage: 'entire 10-year period' }
+                    ];
+                    const timeExpr = timeExpressions[i % timeExpressions.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task1',
+                        difficulty: 'medium',
+                        type: 'flashcard',
+                        question: {
+                            en: `When do you use "${timeExpr.expr}" in Task 1?`,
+                            de: `Wann verwenden Sie "${timeExpr.expr}" in Task 1?`
+                        },
+                        answer: {
+                            en: `Use "${timeExpr.expr}" ${timeExpr.usage}. Example: "Sales increased steadily ${timeExpr.expr}."`,
+                            de: `Verwenden Sie "${timeExpr.expr}" ${timeExpr.usage}. Beispiel: "Verkäufe stiegen stetig ${timeExpr.expr}."`
+                        },
+                        hint: 'Consider the time reference needed',
+                        tags: ['writing', 'task1', 'time-expressions']
+                    });
+                } else {
+                    // Complete model answers
+                    const vocabItem = task1Vocabulary.trends[(i-150) % task1Vocabulary.trends.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task1',
+                        difficulty: 'hard',
+                        type: 'flashcard',
+                        question: {
+                            en: `Write a complete paragraph using "${vocabItem.en}" for data description`,
+                            de: `Schreiben Sie einen vollständigen Absatz mit "${vocabItem.de}" zur Datenbeschreibung`
+                        },
+                        answer: {
+                            en: `The data ${vocabItem.en === 'fluctuate' ? 'fluctuated considerably' : vocabItem.en === 'plummet' ? 'plummeted dramatically' : vocabItem.en === 'soar' ? 'soared remarkably' : vocabItem.en + 'ed'} between [year] and [year]. ${vocabItem.example} This trend was particularly noticeable during [time period], when [specific detail]. In comparison to [benchmark], the figures showed [relationship].`,
+                            de: `Die Daten ${vocabItem.de} zwischen [Jahr] und [Jahr]. ${vocabItem.example} Dieser Trend war besonders auffällig während [Zeitraum], als [spezifisches Detail]. Im Vergleich zu [Benchmark] zeigten die Zahlen [Beziehung].`
+                        },
+                        hint: 'Include specific data points and comparisons',
+                        tags: ['writing', 'task1', 'model-answer', 'advanced']
+                    });
+                }
+            }
+
+            // Writing Task 2 cards - EXPANDED (250 cards)
+            for (let i = 0; i < 250; i++) {
+                const topics = ['education', 'technology', 'environment', 'health', 'society', 'work-life balance'];
+                const topic = topics[i % topics.length];
+
+                if (i < 50) {
+                    // Introduction templates with thesis statements
+                    const introPhrase = task2Vocabulary.introduction[i % task2Vocabulary.introduction.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task2',
+                        difficulty: 'medium',
+                        type: 'quiz',
+                        question: {
+                            en: `Complete an introduction about ${topic} starting with "${introPhrase.en}"`,
+                            de: `Vervollständigen Sie eine Einleitung über ${topic} beginnend mit "${introPhrase.de}"`
+                        },
+                        answer: {
+                            en: `${introPhrase.en} ${topic} plays a crucial role in modern society. This essay will examine both the advantages and disadvantages of [specific aspect], before concluding that [thesis statement].`,
+                            de: `${introPhrase.de} ${topic} eine wichtige Rolle in der modernen Gesellschaft spielt. Dieser Aufsatz wird sowohl Vor- als auch Nachteile von [spezifischer Aspekt] untersuchen, bevor er zu dem Schluss kommt, dass [These].`
+                        },
+                        expectedAnswer: introPhrase.en.split(' ')[0],
+                        hint: 'Include context, essay plan, and thesis',
+                        tags: ['writing', 'task2', 'introduction', topic]
+                    });
+                } else if (i < 100) {
+                    // Body paragraph development
+                    const bodyPhrase = task2Vocabulary.mainBody[i % task2Vocabulary.mainBody.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task2',
+                        difficulty: 'hard',
+                        type: 'flashcard',
+                        question: {
+                            en: `Develop a body paragraph about ${topic} using "${bodyPhrase.en}" as a transition`,
+                            de: `Entwickeln Sie einen Hauptabsatz über ${topic} mit "${bodyPhrase.de}" als Übergang`
+                        },
+                        answer: {
+                            en: `${bodyPhrase.en}, ${topic} has transformed how we [action]. For instance, [specific example with details]. This demonstrates that [explanation linking to main argument]. According to recent studies, [statistic or evidence]. Therefore, it is evident that [mini-conclusion reinforcing paragraph topic].`,
+                            de: `${bodyPhrase.de} hat ${topic} verändert, wie wir [Aktion]. Zum Beispiel [spezifisches Beispiel mit Details]. Dies zeigt, dass [Erklärung mit Bezug zum Hauptargument]. Laut aktuellen Studien [Statistik oder Beleg]. Daher ist es offensichtlich, dass [Mini-Schlussfolgerung].`
+                        },
+                        hint: 'Include: Topic sentence, example, explanation, evidence, link',
+                        tags: ['writing', 'task2', 'body-paragraph', 'structure']
+                    });
+                } else if (i < 150) {
+                    // Complex argument structures
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task2',
+                        difficulty: 'hard',
+                        type: 'quiz',
+                        question: {
+                            en: `Write a counter-argument paragraph about ${topic}`,
+                            de: `Schreiben Sie einen Gegenargument-Absatz über ${topic}`
+                        },
+                        answer: {
+                            en: `While some argue that ${topic} brings numerous benefits, critics contend that it also poses significant challenges. They point out that [counter-argument]. However, this view fails to consider [rebuttal]. Moreover, [additional supporting point]. Thus, although concerns exist, the benefits outweigh the drawbacks.`,
+                            de: `Während einige argumentieren, dass ${topic} zahlreiche Vorteile bringt, behaupten Kritiker, dass es auch erhebliche Herausforderungen darstellt. Sie weisen darauf hin, dass [Gegenargument]. Diese Ansicht berücksichtigt jedoch nicht [Widerlegung]. Darüber hinaus [zusätzlicher Unterstützungspunkt]. Obwohl Bedenken bestehen, überwiegen die Vorteile.`
+                        },
+                        expectedAnswer: 'While',
+                        hint: 'Present opposing view, then refute it',
+                        tags: ['writing', 'task2', 'counter-argument', 'advanced']
+                    });
+                } else if (i < 200) {
+                    // Conclusion templates
+                    const conclusionPhrase = task2Vocabulary.conclusion[i % task2Vocabulary.conclusion.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task2',
+                        difficulty: 'medium',
+                        type: 'flashcard',
+                        question: {
+                            en: `Write a conclusion about ${topic} using "${conclusionPhrase.en}"`,
+                            de: `Schreiben Sie eine Schlussfolgerung über ${topic} mit "${conclusionPhrase.de}"`
+                        },
+                        answer: {
+                            en: `${conclusionPhrase.en}, this essay has demonstrated that ${topic} significantly impacts [aspect]. The evidence suggests that [summary of main points]. Moving forward, it is crucial that [recommendation or future implication]. Only through [final thought] can we ensure [desired outcome].`,
+                            de: `${conclusionPhrase.de} hat dieser Aufsatz gezeigt, dass ${topic} erhebliche Auswirkungen auf [Aspekt] hat. Die Beweise deuten darauf hin, dass [Zusammenfassung der Hauptpunkte]. In Zukunft ist es entscheidend, dass [Empfehlung]. Nur durch [Abschlussgedanke] können wir [gewünschtes Ergebnis] sicherstellen.`
+                        },
+                        hint: 'Summarize without repeating, add final insight',
+                        tags: ['writing', 'task2', 'conclusion', 'structure']
+                    });
+                } else {
+                    // Complete essay outlines
+                    const essayTypes = ['opinion', 'discussion', 'problem-solution', 'advantages-disadvantages'];
+                    const essayType = essayTypes[i % essayTypes.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'writing-task2',
+                        difficulty: 'hard',
+                        type: 'flashcard',
+                        question: {
+                            en: `Create a complete essay outline for a ${essayType} essay about ${topic}`,
+                            de: `Erstellen Sie eine vollständige Aufsatzgliederung für einen ${essayType} Aufsatz über ${topic}`
+                        },
+                        answer: {
+                            en: `${essayType.toUpperCase()} ESSAY OUTLINE:\n\nINTRODUCTION:\n- Hook: General statement about ${topic}\n- Background: Context and importance\n- Thesis: Clear position/preview\n\nBODY 1:\n- Topic sentence: ${essayType === 'opinion' ? 'First reason for position' : essayType === 'discussion' ? 'First viewpoint' : essayType === 'problem-solution' ? 'Problem description' : 'Advantages'}\n- Example: Specific case\n- Explanation: Why this matters\n- Link: Connection to thesis\n\nBODY 2:\n- Topic sentence: ${essayType === 'opinion' ? 'Second reason' : essayType === 'discussion' ? 'Alternative viewpoint' : essayType === 'problem-solution' ? 'Solutions' : 'Disadvantages'}\n- Development: Detailed analysis\n- Evidence: Support claims\n- Evaluation: Critical assessment\n\nCONCLUSION:\n- Restatement: Main argument\n- Summary: Key points\n- Final thought: Broader implications`,
+                            de: `${essayType.toUpperCase()} AUFSATZ GLIEDERUNG: [German translation of outline]`
+                        },
+                        hint: 'Each paragraph needs clear purpose and connection',
+                        tags: ['writing', 'task2', 'essay-outline', essayType, 'advanced']
+                    });
+                }
+            }
+
+            // Grammar cards - EXPANDED (200 cards)
+            for (let i = 0; i < 200; i++) {
+                const grammarTopics = [
+                    {
+                        topic: 'Present Perfect Continuous',
+                        question: 'Form and use Present Perfect Continuous in academic writing',
+                        answer: 'Form: have/has been + -ing. Use: 1) Actions starting in past, continuing to present with emphasis on duration. 2) Recent activities explaining present results. Example: "Scientists have been studying this phenomenon for decades."',
+                        example: 'Researchers have been investigating climate change since the 1970s.'
+                    },
+                    {
+                        topic: 'Passive Constructions',
+                        question: 'Transform active to passive: "Researchers conducted the experiment"',
+                        answer: 'Passive: "The experiment was conducted (by researchers)". Use passive to: 1) Emphasize action/result over actor, 2) Maintain academic objectivity, 3) Create cohesion by controlling sentence subjects.',
+                        example: 'It has been argued that... / It is widely believed that...'
+                    },
+                    {
+                        topic: 'Complex Noun Phrases',
+                        question: 'Build complex noun phrases for academic writing',
+                        answer: 'Structure: [Determiner] + [Pre-modifiers] + HEAD NOUN + [Post-modifiers]. Example: "The rapid technological advancement in developing countries" = The (det) + rapid technological (pre-mod) + advancement (head) + in developing countries (post-mod)',
+                        example: 'The significant environmental impact of industrial development in emerging economies'
+                    },
+                    {
+                        topic: 'Subjunctive Mood',
+                        question: 'Use subjunctive in formal recommendations',
+                        answer: 'Form: Base verb (no -s for third person). Use after: suggest, recommend, insist, demand, require. Example: "It is essential that every student submit their work on time" (NOT submits)',
+                        example: 'The committee recommends that the policy be revised immediately.'
+                    },
+                    {
+                        topic: 'Cleft Sentences',
+                        question: 'Create emphasis using cleft sentences',
+                        answer: 'It-cleft: "It is/was... that..." What-cleft: "What... is/was..." Use to emphasize specific information. Example: "It was the lack of funding that caused the project to fail" (emphasizes cause)',
+                        example: 'What matters most is the quality of education, not the quantity.'
+                    },
+                    {
+                        topic: 'Inversion',
+                        question: 'Use inversion for formal/emphatic style',
+                        answer: 'After negative adverbs: Never/Rarely/Seldom + auxiliary + subject + verb. Example: "Never have we seen such rapid change." After "Only": "Only when... did we realize..." Use sparingly for emphasis.',
+                        example: 'Not only did the study confirm the hypothesis, but it also revealed new insights.'
+                    },
+                    {
+                        topic: 'Participle Clauses',
+                        question: 'Reduce clauses using participles',
+                        answer: 'Present participle (-ing): simultaneous/cause. Past participle (-ed): passive/completed. Perfect participle (having + past participle): completed before main action. Example: "Having analyzed the data, we concluded..."',
+                        example: 'Based on recent evidence, the theory requires modification.'
+                    },
+                    {
+                        topic: 'Modal Perfects',
+                        question: 'Express past possibility/deduction',
+                        answer: 'Structure: modal + have + past participle. Must have (logical deduction), might/may have (possibility), could have (possibility/criticism), should have (expectation/regret). Example: "The results might have been affected by external factors."',
+                        example: 'The error must have occurred during data collection.'
+                    }
+                ];
+
+                const grammar = grammarTopics[i % grammarTopics.length];
+
+                if (i < 100) {
+                    // Basic to intermediate grammar
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'grammar',
+                        difficulty: i < 50 ? 'easy' : 'medium',
+                        type: i % 3 === 0 ? 'quiz' : 'flashcard',
+                        question: {
+                            en: `Grammar: ${grammar.question}`,
+                            de: `Grammatik: ${grammar.question}`
+                        },
+                        answer: {
+                            en: `${grammar.answer}\n\nExample: ${grammar.example}`,
+                            de: `${grammar.answer}\n\nBeispiel: ${grammar.example}`
+                        },
+                        expectedAnswer: grammar.topic.split(' ')[0].toLowerCase(),
+                        hint: `Focus on ${grammar.topic}`,
+                        tags: ['grammar', grammar.topic.toLowerCase().replace(/\s+/g, '-'), 'structure']
+                    });
+                } else {
+                    // Advanced grammar with error correction
+                    const commonErrors = [
+                        { error: 'The amount of people', correct: 'The number of people', rule: 'Amount = uncountable, Number = countable' },
+                        { error: 'Despite of the fact', correct: 'Despite the fact', rule: 'Despite = no "of", In spite of = with "of"' },
+                        { error: 'The reason is because', correct: 'The reason is that', rule: 'Avoid redundancy: reason + because' },
+                        { error: 'More better', correct: 'Better / Much better', rule: 'No double comparatives' },
+                        { error: 'Neither...or', correct: 'Neither...nor', rule: 'Correct pairing of correlative conjunctions' }
+                    ];
+
+                    const errorItem = commonErrors[i % commonErrors.length];
+                    generatedCards.push({
+                        id: cardId++,
+                        category: 'grammar',
+                        difficulty: 'hard',
+                        type: 'quiz',
+                        question: {
+                            en: `Correct this error: "${errorItem.error}"`,
+                            de: `Korrigieren Sie diesen Fehler: "${errorItem.error}"`
+                        },
+                        answer: {
+                            en: `Correct: "${errorItem.correct}"\nRule: ${errorItem.rule}`,
+                            de: `Korrekt: "${errorItem.correct}"\nRegel: ${errorItem.rule}`
+                        },
+                        expectedAnswer: errorItem.correct.split(' ')[0].toLowerCase(),
+                        hint: 'Think about common grammar rules',
+                        tags: ['grammar', 'error-correction', 'advanced']
+                    });
+                }
+            }
+
+            // Vocabulary cards - Academic & Formal (150 cards)
+            for (let i = 0; i < 150; i++) {
+                const academicWords = [
+                    { word: 'ameliorate', de: 'verbessern', meaning: 'make better', usage: 'The new policy aims to ameliorate working conditions.', synonyms: 'improve, enhance, better' },
+                    { word: 'eschew', de: 'meiden', meaning: 'deliberately avoid', usage: 'Modern medicine eschews outdated practices.', synonyms: 'avoid, shun, abstain from' },
+                    { word: 'burgeoning', de: 'aufkeimend', meaning: 'rapidly growing', usage: 'The burgeoning tech industry creates new opportunities.', synonyms: 'growing, expanding, flourishing' },
+                    { word: 'contentious', de: 'umstritten', meaning: 'causing disagreement', usage: 'Immigration remains a contentious issue.', synonyms: 'controversial, disputed, debatable' },
+                    { word: 'dichotomy', de: 'Zwiespalt', meaning: 'division into two opposing parts', usage: 'The dichotomy between theory and practice.', synonyms: 'division, contrast, split' },
+                    { word: 'empirical', de: 'empirisch', meaning: 'based on observation', usage: 'Empirical evidence supports the hypothesis.', synonyms: 'observed, experimental, factual' },
+                    { word: 'facet', de: 'Facette', meaning: 'one aspect', usage: 'We examined every facet of the problem.', synonyms: 'aspect, dimension, feature' },
+                    { word: 'germane', de: 'relevant', meaning: 'relevant and appropriate', usage: 'Her comments were germane to the discussion.', synonyms: 'relevant, pertinent, applicable' },
+                    { word: 'harbinger', de: 'Vorbote', meaning: 'sign of future events', usage: 'Early sales were a harbinger of success.', synonyms: 'herald, precursor, omen' },
+                    { word: 'impetus', de: 'Antrieb', meaning: 'driving force', usage: 'The crisis provided impetus for change.', synonyms: 'stimulus, motivation, catalyst' }
+                ];
+
+                const word = academicWords[i % academicWords.length];
+
+                generatedCards.push({
+                    id: cardId++,
+                    category: 'vocabulary',
+                    difficulty: 'hard',
+                    type: i % 4 === 0 ? 'quiz' : 'flashcard',
+                    question: {
+                        en: `Define and use "${word.word}" in an academic context`,
+                        de: `Definieren und verwenden Sie "${word.de}" im akademischen Kontext`
+                    },
+                    answer: {
+                        en: `${word.word} = ${word.meaning}\n\nExample: ${word.usage}\n\nSynonyms: ${word.synonyms}\n\nAcademic usage: This formal term adds precision and sophistication to academic writing.`,
+                        de: `${word.de} = ${word.meaning}\n\nBeispiel: ${word.usage}\n\nSynonyme: ${word.synonyms}`
+                    },
+                    expectedAnswer: word.meaning.split(' ')[0],
+                    hint: `Think: ${word.meaning}`,
+                    tags: ['vocabulary', 'academic', 'formal', 'advanced']
+                });
+            }
+
+            // Collocations - Academic Writing (100 cards)
+            for (let i = 0; i < 100; i++) {
+                const collocations = [
+                    {
+                        type: 'conduct + noun',
+                        correct: 'conduct research / conduct a survey / conduct an investigation',
+                        incorrect: 'make research / do a survey',
+                        rule: 'Conduct = formal way to perform systematic studies'
+                    },
+                    {
+                        type: 'draw + noun',
+                        correct: 'draw a conclusion / draw a comparison / draw attention to',
+                        incorrect: 'make a conclusion / do a comparison',
+                        rule: 'Draw = extract or derive from analysis'
+                    },
+                    {
+                        type: 'pose + noun',
+                        correct: 'pose a threat / pose a question / pose a challenge',
+                        incorrect: 'make a threat / do a question',
+                        rule: 'Pose = present or constitute'
+                    },
+                    {
+                        type: 'yield + noun',
+                        correct: 'yield results / yield benefits / yield insights',
+                        incorrect: 'give results / make benefits',
+                        rule: 'Yield = produce as a result of process'
+                    },
+                    {
+                        type: 'undergo + noun',
+                        correct: 'undergo changes / undergo transformation / undergo scrutiny',
+                        incorrect: 'have changes / make transformation',
+                        rule: 'Undergo = experience or be subjected to'
+                    }
+                ];
+
+                const collocation = collocations[i % collocations.length];
+
+                generatedCards.push({
+                    id: cardId++,
+                    category: 'collocations',
+                    difficulty: 'medium',
+                    type: i % 3 === 0 ? 'quiz' : 'flashcard',
+                    question: {
+                        en: `Which is correct: ${collocation.type}?`,
+                        de: `Was ist richtig: ${collocation.type}?`
+                    },
+                    answer: {
+                        en: `CORRECT: ${collocation.correct}\n\nAVOID: ${collocation.incorrect}\n\nRULE: ${collocation.rule}`,
+                        de: `RICHTIG: ${collocation.correct}\n\nVERMEIDEN: ${collocation.incorrect}\n\nREGEL: ${collocation.rule}`
+                    },
+                    expectedAnswer: collocation.type.split(' ')[0],
+                    hint: 'Think about formal academic style',
+                    tags: ['collocations', 'academic-writing', 'formal']
+                });
+            }
+
+            // Speaking cards (50) - Reduced priority
+            for (let i = 0; i < 50; i++) {
+                const parts = ['part1', 'part2', 'part3'];
+                const part = parts[i % 3];
+                const topics = ['education', 'work', 'technology', 'environment', 'culture'];
+                const topic = topics[i % topics.length];
+
+                generatedCards.push({
+                    id: cardId++,
+                    category: 'speaking',
+                    difficulty: part === 'part1' ? 'easy' : part === 'part2' ? 'medium' : 'hard',
+                    type: 'flashcard',
+                    question: {
+                        en: `Speaking ${part.toUpperCase()}: Discuss ${topic}`,
+                        de: `Sprechen ${part.toUpperCase()}: Diskutieren Sie ${topic}`
+                    },
+                    answer: {
+                        en: part === 'part1' ? `30-second answer structure: 1) Direct answer 2) Reason 3) Example` :
+                            part === 'part2' ? `2-minute structure: Introduction, Details, Conclusion` :
+                            `Discussion structure: Overview, Multiple perspectives, Personal stance`,
+                        de: part === 'part1' ? `30-Sekunden-Antwort: 1) Direkte Antwort 2) Grund 3) Beispiel` :
+                            part === 'part2' ? `2-Minuten-Struktur: Einleitung, Details, Schluss` :
+                            `Diskussionsstruktur: Überblick, Verschiedene Perspektiven, Persönliche Haltung`
+                    },
+                    hint: 'Focus on structure and fluency',
+                    tags: ['speaking', part, topic]
+                });
+            }
+
+            // Reading cards (50) - Reduced priority
+            for (let i = 0; i < 50; i++) {
+                const skills = ['skimming', 'scanning', 'intensive reading', 'inference', 'vocabulary guessing'];
+                const skill = skills[i % skills.length];
+
+                generatedCards.push({
+                    id: cardId++,
+                    category: 'reading',
+                    difficulty: 'medium',
+                    type: 'flashcard',
+                    question: {
+                        en: `Reading: ${skill} technique`,
+                        de: `Lesen: ${skill} Technik`
+                    },
+                    answer: {
+                        en: `${skill}: Quick reference for IELTS reading passages`,
+                        de: `${skill}: Schnellreferenz für IELTS-Lesepassagen`
+                    },
+                    hint: `Use ${skill} strategically`,
+                    tags: ['reading', skill]
+                });
+            }
+
+            // Listening cards (50) - ADVANCED/LATER PRIORITY
+            for (let i = 0; i < 50; i++) {
+                const sections = ['Section 1', 'Section 2', 'Section 3', 'Section 4'];
+                const section = sections[i % 4];
+
+                generatedCards.push({
+                    id: cardId++,
+                    category: 'listening',
+                    difficulty: 'hard',
+                    type: 'flashcard',
+                    question: {
+                        en: `Listening ${section}: Advanced strategy`,
+                        de: `Hören ${section}: Fortgeschrittene Strategie`
+                    },
+                    answer: {
+                        en: `${section}: Focus on prediction, keywords, and note-taking`,
+                        de: `${section}: Fokus auf Vorhersage, Schlüsselwörter und Notizen`
+                    },
+                    hint: 'Advanced listening requires prediction',
+                    tags: ['listening', 'advanced', section.toLowerCase()]
+                });
+            }
+
+
+            return generatedCards;
+        }
+
+        // Initialize the application
+        function init() {
+            cards = generateCards();
+            loadProgress();
+            updateUI();
+            setupKeyboardShortcuts();
+            startSessionTimer();
+            generateTagCloud();
+            updateChart();
+        }
+
+        // Language functions
+        function setLanguage(lang) {
+            language = lang;
+            localStorage.setItem('language', lang);
+            document.getElementById('languageModal').classList.remove('show');
+            updateUI();
+        }
+
+        function toggleLanguage() {
+            language = language === 'en' ? 'de' : 'en';
+            localStorage.setItem('language', language);
+            updateUI();
+        }
+
+        // Card navigation
+        function nextCard() {
+            if (currentCardIndex < cards.length - 1) {
+                currentCardIndex++;
+                updateCard();
+                sessionStats.cardsStudied++;
+                resetCardFlip();
+            }
+        }
+
+        function previousCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateCard();
+                resetCardFlip();
+            }
+        }
+
+        function skipCard() {
+            sessionStats.skipped++;
+            nextCard();
+        }
+
+        function shuffleCards() {
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        // Card interaction
+        function flipCard() {
+            if (studyMode === 'flashcard') {
+                document.getElementById('flashcard').classList.toggle('flipped');
+            }
+        }
+
+        function resetCardFlip() {
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+
+        // Study modes
+        function setStudyMode(mode) {
+            studyMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.mode-btn').classList.add('active');
+
+            const studyArea = document.getElementById('studyArea');
+
+            switch(mode) {
+                case 'flashcard':
+                    studyArea.innerHTML = `
+                        <div class="flashcard" id="flashcard" onclick="flipCard()">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <div class="card-content" id="cardFront"></div>
+                                    <div class="card-hint">Click to flip</div>
+                                </div>
+                                <div class="flashcard-back">
+                                    <div class="card-content" id="cardBack"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'quiz':
+                    studyArea.innerHTML = `
+                        <div class="quiz-container">
+                            <div class="quiz-question" id="quizQuestion"></div>
+                            <input type="text" class="quiz-input" id="quizInput" placeholder="Type your answer here..." onkeypress="checkQuizAnswer(event)">
+                            <button class="btn btn-primary" onclick="submitQuizAnswer()">Submit Answer</button>
+                            <div class="quiz-feedback" id="quizFeedback"></div>
+                        </div>
+                    `;
+                    break;
+
+                case 'multiple':
+                    studyArea.innerHTML = `
+                        <div class="quiz-container">
+                            <div class="quiz-question" id="mcQuestion"></div>
+                            <div id="mcOptions"></div>
+                            <div class="quiz-feedback" id="mcFeedback"></div>
+                        </div>
+                    `;
+                    break;
+
+                case 'timed':
+                    document.getElementById('timer').classList.add('active');
+                    startTimer();
+                    break;
+            }
+
+            updateCard();
+        }
+
+        // Quiz functionality
+        function checkQuizAnswer(event) {
+            if (event.key === 'Enter') {
+                submitQuizAnswer();
+            }
+        }
+
+        function submitQuizAnswer() {
+            const input = document.getElementById('quizInput');
+            const feedback = document.getElementById('quizFeedback');
+            const card = cards[currentCardIndex];
+
+            const userAnswer = input.value.toLowerCase().trim();
+            const correctAnswer = (card.expectedAnswer || card.answer[language].split(':')[0]).toLowerCase().trim();
+
+            if (userAnswer === correctAnswer ||
+                (userAnswer.length > 3 && correctAnswer.includes(userAnswer))) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                feedback.classList.add('success', 'show');
+                feedback.classList.remove('error');
+                feedback.innerHTML = `✓ Correct! ${card.answer[language]}`;
+                sessionStats.correct++;
+
+                setTimeout(() => nextCard(), 2000);
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+                feedback.classList.add('error', 'show');
+                feedback.classList.remove('success');
+                feedback.innerHTML = `✗ Not quite. The answer is: ${card.answer[language]}`;
+                sessionStats.incorrect++;
+                mistakeCards.add(card.id);
+            }
+
+            updateStats();
+        }
+
+        // Filter functions
+        function filterCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (category === 'all') {
+                cards = generateCards();
+            } else {
+                cards = generateCards().filter(card => card.category === category);
+            }
+
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        function filterDifficulty(difficulty) {
+            currentDifficulty = difficulty;
+
+            if (difficulty === 'all') {
+                cards = generateCards();
+            } else {
+                cards = generateCards().filter(card => card.difficulty === difficulty);
+            }
+
+            if (currentCategory !== 'all') {
+                cards = cards.filter(card => card.category === currentCategory);
+            }
+
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        function searchCards() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            if (searchTerm === '') {
+                cards = generateCards();
+            } else {
+                cards = generateCards().filter(card =>
+                    card.question.en.toLowerCase().includes(searchTerm) ||
+                    card.question.de.toLowerCase().includes(searchTerm) ||
+                    card.answer.en.toLowerCase().includes(searchTerm) ||
+                    card.answer.de.toLowerCase().includes(searchTerm) ||
+                    card.tags.some(tag => tag.includes(searchTerm))
+                );
+            }
+
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        // Progress tracking
+        function markMastered() {
+            const card = cards[currentCardIndex];
+            masteredCards.add(card.id);
+            localStorage.setItem('masteredCards', JSON.stringify([...masteredCards]));
+            updateStats();
+            nextCard();
+        }
+
+        function reviewMistakes() {
+            if (mistakeCards.size === 0) {
+                alert('No mistakes to review!');
+                return;
+            }
+
+            cards = generateCards().filter(card => mistakeCards.has(card.id));
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        function spacedRepetition() {
+            // Simple spaced repetition algorithm
+            const reviewSchedule = JSON.parse(localStorage.getItem('reviewSchedule') || '{}');
+            const today = new Date().toDateString();
+
+            cards = generateCards().filter(card => {
+                const lastReview = reviewSchedule[card.id];
+                if (!lastReview) return true;
+
+                const daysSince = Math.floor((new Date() - new Date(lastReview)) / (1000 * 60 * 60 * 24));
+                return daysSince >= (masteredCards.has(card.id) ? 7 : 1);
+            });
+
+            if (cards.length === 0) {
+                alert('No cards due for review!');
+                cards = generateCards();
+            }
+
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        // Timer functions
+        function startTimer() {
+            clearInterval(timerInterval);
+            timeRemaining = parseInt(localStorage.getItem('timerDuration') || '30');
+
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimer();
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    nextCard();
+                    startTimer();
+                }
+            }, 1000);
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent =
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function startSessionTimer() {
+            setInterval(() => {
+                const elapsed = Math.floor((Date.now() - sessionStats.startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('sessionTime').textContent =
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // UI Updates
+        function updateCard() {
+            const card = cards[currentCardIndex];
+            if (!card) return;
+
+            document.getElementById('cardNumber').textContent = `Card ${currentCardIndex + 1} of ${cards.length}`;
+
+            // Update difficulty badge
+            const badge = document.getElementById('difficultyBadge');
+            badge.textContent = card.difficulty.charAt(0).toUpperCase() + card.difficulty.slice(1);
+            badge.className = `difficulty-badge difficulty-${card.difficulty}`;
+
+            // Update content based on study mode
+            switch(studyMode) {
+                case 'flashcard':
+                    if (document.getElementById('cardFront')) {
+                        document.getElementById('cardFront').textContent = card.question[language];
+                        document.getElementById('cardBack').textContent = card.answer[language];
+                    }
+                    break;
+
+                case 'quiz':
+                    if (document.getElementById('quizQuestion')) {
+                        document.getElementById('quizQuestion').textContent = card.question[language];
+                        document.getElementById('quizInput').value = '';
+                        document.getElementById('quizInput').classList.remove('correct', 'incorrect');
+                        document.getElementById('quizFeedback').classList.remove('show');
+                    }
+                    break;
+
+                case 'multiple':
+                    if (document.getElementById('mcQuestion')) {
+                        document.getElementById('mcQuestion').textContent = card.question[language];
+                        generateMultipleChoice(card);
+                    }
+                    break;
+            }
+
+            updateProgressBar();
+        }
+
+        function generateMultipleChoice(card) {
+            const options = [];
+            const correctAnswer = card.answer[language];
+            options.push(correctAnswer);
+
+            // Generate wrong options
+            const allCards = generateCards();
+            while (options.length < 4) {
+                const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
+                if (randomCard.category === card.category && !options.includes(randomCard.answer[language])) {
+                    options.push(randomCard.answer[language]);
+                }
+            }
+
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+
+            const optionsHTML = options.map((option, index) => `
+                <button class="btn btn-secondary" style="display: block; width: 100%; margin-bottom: 10px; text-align: left;"
+                        onclick="checkMultipleChoice('${option.replace(/'/g, "\\'")}', '${correctAnswer.replace(/'/g, "\\'")}')">
+                    ${String.fromCharCode(65 + index)}. ${option}
+                </button>
+            `).join('');
+
+            document.getElementById('mcOptions').innerHTML = optionsHTML;
+        }
+
+        function checkMultipleChoice(selected, correct) {
+            const feedback = document.getElementById('mcFeedback');
+
+            if (selected === correct) {
+                feedback.classList.add('success', 'show');
+                feedback.innerHTML = '✓ Correct!';
+                sessionStats.correct++;
+                setTimeout(() => nextCard(), 1500);
+            } else {
+                feedback.classList.add('error', 'show');
+                feedback.innerHTML = `✗ Incorrect. The correct answer is: ${correct}`;
+                sessionStats.incorrect++;
+                mistakeCards.add(cards[currentCardIndex].id);
+            }
+
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('totalCards').textContent = cards.length;
+            document.getElementById('masteredCards').textContent = masteredCards.size;
+
+            const accuracy = sessionStats.correct + sessionStats.incorrect > 0
+                ? Math.round(sessionStats.correct / (sessionStats.correct + sessionStats.incorrect) * 100)
+                : 0;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+
+            // Update feedback summary
+            document.getElementById('excellentCount').textContent = sessionStats.correct;
+            document.getElementById('goodCount').textContent = sessionStats.skipped;
+            document.getElementById('needsWorkCount').textContent = sessionStats.incorrect;
+
+            updateChart();
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentCardIndex + 1) / cards.length) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = Math.round(progress) + '%';
+        }
+
+        function updateChart() {
+            const chartBars = document.getElementById('chartBars');
+            const categories = ['listening', 'reading', 'writing-task1', 'writing-task2', 'speaking'];
+
+            const categoryStats = categories.map(cat => {
+                const catCards = generateCards().filter(c => c.category === cat || c.category.startsWith(cat));
+                const mastered = catCards.filter(c => masteredCards.has(c.id)).length;
+                return {
+                    category: cat,
+                    percentage: catCards.length > 0 ? (mastered / catCards.length) * 100 : 0
+                };
+            });
+
+            chartBars.innerHTML = categoryStats.map(stat => `
+                <div class="chart-bar" style="height: ${stat.percentage}%">
+                    <span class="chart-label">${stat.category.replace('-', ' ')}</span>
+                </div>
+            `).join('');
+        }
+
+        function generateTagCloud() {
+            const allTags = new Set();
+            generateCards().forEach(card => {
+                card.tags.forEach(tag => allTags.add(tag));
+            });
+
+            const tagsContainer = document.getElementById('tagsContainer');
+            tagsContainer.innerHTML = Array.from(allTags).slice(0, 20).map(tag =>
+                `<span class="tag" onclick="filterByTag('${tag}')">${tag}</span>`
+            ).join('');
+        }
+
+        function filterByTag(tag) {
+            cards = generateCards().filter(card => card.tags.includes(tag));
+            currentCardIndex = 0;
+            updateCard();
+        }
+
+        function showHint() {
+            const card = cards[currentCardIndex];
+            alert(card.hint || 'No hint available for this card');
+        }
+
+        // Settings
+        function openSettingsModal() {
+            document.getElementById('settingsModal').classList.add('show');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').classList.remove('show');
+        }
+
+        function saveSettings() {
+            const settings = {
+                autoFlip: document.getElementById('autoFlip').checked,
+                soundEffects: document.getElementById('soundEffects').checked,
+                timedMode: document.getElementById('timedMode').checked,
+                timerDuration: document.getElementById('timerDuration').value,
+                darkMode: document.getElementById('darkMode').checked,
+                fontSize: document.getElementById('fontSize').value
+            };
+
+            localStorage.setItem('settings', JSON.stringify(settings));
+            applySettings(settings);
+            closeSettingsModal();
+        }
+
+        function applySettings(settings) {
+            if (settings.darkMode) {
+                document.body.style.filter = 'invert(1)';
+            } else {
+                document.body.style.filter = 'none';
+            }
+
+            if (settings.fontSize === 'large') {
+                document.body.style.fontSize = '18px';
+            } else if (settings.fontSize === 'small') {
+                document.body.style.fontSize = '14px';
+            } else {
+                document.body.style.fontSize = '16px';
+            }
+
+            if (settings.timedMode) {
+                document.getElementById('timer').classList.add('active');
+                startTimer();
+            }
+        }
+
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress?')) {
+                masteredCards.clear();
+                mistakeCards.clear();
+                localStorage.removeItem('masteredCards');
+                localStorage.removeItem('reviewSchedule');
+                sessionStats = {
+                    correct: 0,
+                    incorrect: 0,
+                    skipped: 0,
+                    startTime: Date.now(),
+                    cardsStudied: 0
+                };
+                updateStats();
+                alert('Progress reset successfully!');
+            }
+        }
+
+        // Keyboard shortcuts
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT') return;
+
+                switch(e.key) {
+                    case ' ':
+                        e.preventDefault();
+                        flipCard();
+                        break;
+                    case 'ArrowRight':
+                        nextCard();
+                        break;
+                    case 'ArrowLeft':
+                        previousCard();
+                        break;
+                    case 'm':
+                        markMastered();
+                        break;
+                    case 's':
+                        shuffleCards();
+                        break;
+                    case 'h':
+                        showHint();
+                        break;
+                    case 'r':
+                        reviewMistakes();
+                        break;
+                }
+            });
+        }
+
+        function showShortcuts() {
+            alert(`Keyboard Shortcuts:
+
+Space - Flip card
+→ Arrow - Next card
+← Arrow - Previous card
+M - Mark as mastered
+S - Shuffle cards
+H - Show hint
+R - Review mistakes`);
+        }
+
+        // Load and save progress
+        function loadProgress() {
+            const saved = localStorage.getItem('masteredCards');
+            if (saved) {
+                masteredCards = new Set(JSON.parse(saved));
+            }
+
+            const savedSettings = localStorage.getItem('settings');
+            if (savedSettings) {
+                applySettings(JSON.parse(savedSettings));
+            }
+
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                language = savedLang;
+            }
+        }
+
+        function updateUI() {
+            // Update all UI text based on language
+            const translations = {
+                en: {
+                    totalLabel: 'Total Cards',
+                    masteredLabel: 'Mastered',
+                    streakLabel: 'Day Streak',
+                    accuracyLabel: 'Accuracy',
+                    sessionLabel: 'Session Time',
+                    langLabel: 'Language:'
+                },
+                de: {
+                    totalLabel: 'Gesamtkarten',
+                    masteredLabel: 'Gemeistert',
+                    streakLabel: 'Tagessträhne',
+                    accuracyLabel: 'Genauigkeit',
+                    sessionLabel: 'Sitzungszeit',
+                    langLabel: 'Sprache:'
+                }
+            };
+
+            const t = translations[language];
+            document.getElementById('totalLabel').textContent = t.totalLabel;
+            document.getElementById('masteredLabel').textContent = t.masteredLabel;
+            document.getElementById('streakLabel').textContent = t.streakLabel;
+            document.getElementById('accuracyLabel').textContent = t.accuracyLabel;
+            document.getElementById('sessionLabel').textContent = t.sessionLabel;
+            document.getElementById('langLabel').textContent = t.langLabel;
+
+            updateCard();
+            updateStats();
+        }
+
+        // Mobile menu toggle
+        function toggleSidebar() {
+            const sidebarContent = document.getElementById('sidebarContent');
+            sidebarContent.classList.toggle('show');
+        }
+
+        // Initialize on page load
+        window.onload = init;
+    </script>
+</body>
+</html>
